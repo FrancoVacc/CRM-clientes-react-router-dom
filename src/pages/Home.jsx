@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Cliente from "../components/Cliente";
+import { obtenerClientes } from "../data/Clientes";
 
 const Home = () => {
   const clientes = useLoaderData();
@@ -31,42 +32,5 @@ const Home = () => {
 export default Home;
 
 export const clientesLoader = () => {
-  const clientes = [
-    {
-      id: "1",
-      nombre: "Franco",
-      telefono: "3444-407543",
-      email: "franco@mail.com",
-      empresa: "programacion",
-    },
-    {
-      id: "2",
-      nombre: "Tami",
-      telefono: "3444-444444",
-      email: "Tami@mail.com",
-      empresa: "programacion",
-    },
-    {
-      id: "3",
-      nombre: "Piti",
-      telefono: "3444-555555",
-      email: "Piti@mail.com",
-      empresa: "programacion.com",
-    },
-    {
-      id: "4",
-      nombre: "Chiquito",
-      telefono: "3444-6666666",
-      email: "Chiquito@mail.com",
-      empresa: "programacion.com",
-    },
-    {
-      id: "5",
-      nombre: "Messi",
-      telefono: "3444-7777777",
-      email: "Messi@mail.com",
-      empresa: "programacion",
-    },
-  ];
-  return clientes;
+  return obtenerClientes();
 };

@@ -5,12 +5,13 @@ import NuevoClientes, {
   action as clientesAction,
 } from "../pages/NuevoClientes";
 import Home, { clientesLoader } from "../pages/Home";
+import NotFound from "../pages/NotFound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <h1>Not Found</h1>,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,

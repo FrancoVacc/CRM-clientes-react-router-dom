@@ -6,6 +6,10 @@ import NuevoClientes, {
 } from "../pages/NuevoClientes";
 import Home, { clientesLoader } from "../pages/Home";
 import NotFound from "../pages/NotFound";
+import EditarClientes, {
+  editarClietnesLoader,
+  action as editarClienteAction,
+} from "../pages/EditarClientes";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +26,12 @@ export const router = createBrowserRouter([
         path: "/clientes/nuevo",
         element: <NuevoClientes />,
         action: clientesAction,
+      },
+      {
+        path: "/clientes/:id/editar",
+        element: <EditarClientes />,
+        loader: editarClietnesLoader,
+        action: editarClienteAction,
       },
     ],
   },

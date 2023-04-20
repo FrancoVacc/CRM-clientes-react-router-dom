@@ -12,6 +12,20 @@ export const obtenerClientes = async () => {
   }
 };
 
+export const obtenerCliente = async (id) => {
+  try {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/${id}`);
+
+    if (!res.ok) throw { status: res.status, statusText: res.statusText };
+
+    const clientes = await res.json();
+
+    return clientes;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const agregarClientes = async (data) => {
   const addData = {
     id: Date.now(),
@@ -19,6 +33,7 @@ export const agregarClientes = async (data) => {
     telefono: data.telefono,
     email: data.email,
     empresa: data.empresa,
+    nota: data.nota,
   };
 
   try {

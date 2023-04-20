@@ -10,6 +10,7 @@ import EditarClientes, {
   editarClietnesLoader,
   action as editarClienteAction,
 } from "../pages/EditarClientes";
+import { action as eliminarClienteAction } from "../components/Cliente";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,11 @@ export const router = createBrowserRouter([
         element: <EditarClientes />,
         loader: editarClietnesLoader,
         action: editarClienteAction,
+      },
+      {
+        path: "/clientes/:id/eliminar",
+        element: <EditarClientes />,
+        action: eliminarClienteAction,
       },
     ],
   },

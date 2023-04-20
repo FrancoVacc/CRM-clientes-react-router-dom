@@ -1,12 +1,20 @@
 import React from "react";
-import { obtenerCliente } from "../data/Clientes";
-import { Form, useNavigate, useLoaderData } from "react-router-dom";
+import { obtenerCliente, actualizarCliente } from "../data/Clientes";
+import {
+  Form,
+  useNavigate,
+  useLoaderData,
+  useActionData,
+  redirect,
+} from "react-router-dom";
 import Formulario from "../components/Formulario";
 import Errores from "../components/Errores";
 
 const EditarClientes = () => {
   const navigate = useNavigate();
   const cliente = useLoaderData();
+  const errores = useActionData();
+
   return (
     <div>
       <h1 className="font-black text-2xl text-slate-50 bg-slate-900 w-full px-10">
@@ -18,8 +26,8 @@ const EditarClientes = () => {
       <Form method="POST">
         <Formulario cliente={cliente} />
       </Form>
-      {/* {errores?.length &&
-      errores.map((error, i) => <Errores key={i}>{error}</Errores>)} */}
+      {errores?.length &&
+        errores.map((error, i) => <Errores key={i}>{error}</Errores>)}
 
       <div>
         <button
@@ -79,5 +87,6 @@ export const action = async ({ request, params }) => {
     return errores;
   }
 
+  await actualizarCliente(params.id, datos);
   return redirect("/");
 };
